@@ -29,8 +29,19 @@
             <p>Python is a popular, high-level, general-purpose programming language known for its simple syntax, readability, and versatility. It supports multiple programming paradigms and is used for a wide range of applications, including web development, data analysis, automation, scientific computing, and artificial intelligence. Its ease of use makes it an ideal choice for beginners, but it is also powerful enough for complex tasks and large-scale projects. </p>
             <p>Python is the most popular coding language in the world.</p>
             <P>Run your Python code.</P>
-            <iframe src="https://cdn.jsdelivr.net/pyodide/v0.23.4/full/pyodide.js" 
-                    width="100%" height="500px" style="border:none; border-radius:12px; box-shadow:0 4px 12px rgba(0,0,0,0.1);"></iframe>
+            <script src="https://cdn.jsdelivr.net/pyodide/v0.23.4/full/pyodide.js"></script>
+            <textarea id="editor">print("Hello World")</textarea>
+            <button onclick="runPython()">Run ▶</button>
+            <pre id="output"></pre>
+
+            <script>
+            async function runPython() {
+              const pyodide = await loadPyodide();
+              let code = document.getElementById("editor").value;
+              let output = await pyodide.runPythonAsync(code);
+              document.getElementById("output").textContent = output;
+            }
+          </script>
           </section>
           <section>
             <h2>JavaScript</h2>
